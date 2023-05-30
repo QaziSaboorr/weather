@@ -140,6 +140,25 @@ body {
         height: 20vh;
     }
 
+    .items {
+        margin: 0px;
+    }
+    
+
+
+
+#listbuttons {
+    
+    position: none;
+    left: 0px;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+}
+
 
    
 }
