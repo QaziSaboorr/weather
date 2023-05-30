@@ -52,7 +52,7 @@ body {
 
 
 #mainsection {
-    border-left: white;
+  
    
     flex-grow: 2;
 
@@ -64,12 +64,13 @@ body {
 
 
 #search {
-
     border-right: 2px solid white;
+    border-bottom: 2px solid white;
     flex-grow: 0.5;
     text-align: center;
     flex-direction: column;
     display: none;
+    height: 20vh;
 }
 .view {
     display: flex !important    ;
@@ -85,18 +86,26 @@ body {
 
 }
 
-
+  
+#align {
+    justify-content: start;
+    align-items: start;
+    position: relative;
+}
 #myform {
-
+    left: 10px;
+    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    height: inherit;
-    padding: 40px 0;
+    position: relative;
+
+
    
-    flex-grow: 1;
 }
+
+
 
 
 
@@ -109,7 +118,7 @@ body {
 
 
     #sec{
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
 
     #mainsection{
@@ -120,6 +129,19 @@ body {
     #mainlist > li {
         margin: 15px
     }
+
+
+    #search {
+        border-right: 0px;
+        flex-grow: 0.5;
+        text-align: center;
+        flex-direction: column;
+        display: none;
+        height: 20vh;
+    }
+
+
+   
 }
 
 input[type=text]:focus {
@@ -179,11 +201,14 @@ input[type=text]:focus {
 
   #formlist {
     list-style: none;
-    height: 60%;
+
     display: flex;
     flex-direction: column;
     justify-content: space-around  ;
     align-items: start;
+ 
+    
+   
 
   }
  

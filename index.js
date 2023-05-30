@@ -6,7 +6,7 @@ $(document).ready(async function () {
     console.log(units);
     try {
       let info = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ed5f1f55c52f0d9ef61f594d6b513de3&units=${units}&lang=en`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ed5f1f55c52f0d9ef61f594d6b513de3&units=metric&lang=en`
       );
       let json = await info.json();
       console.log(json);
@@ -23,7 +23,7 @@ $(document).ready(async function () {
       City: $("#city-input").val(),
       Units: $("#units-input").val(),
     };
-
+    $("#cityheader").text(`Weather Condition in ${input_info.City}`);
     dataJson = await data(input_info.City, input_info.Units);
     let tempInfo = dataJson["main"];
     console.log(dataJson);
