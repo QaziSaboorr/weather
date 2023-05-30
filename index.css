@@ -1,3 +1,8 @@
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: black;
     color: white;
@@ -95,4 +100,14 @@ body {
     }
 }
 
+input[type=text]:focus {
+    border: 3px solid #555;
+    transition: width 0.4s ease-in-out;
+  }
 
+
+  #searchWeather:hover {
+    background-color: lightcyan;
+    width: 70px;
+    height: 30px;
+  }
