@@ -32,12 +32,12 @@ $(document).ready(async function () {
     feelslike = tempInfo["feels_like"];
     tempNormal = tempInfo["temp"];
 
-    $("#FeelsLike").text(feelslike);
-    $("#CurrentTemperature").text(tempNormal);
-    $("#MaximumTemperature").text(temp_max);
-    $("#MinimumTemperature").text(temp_min);
-    $("#Pressure").text(pressure);
-    $("#Humidity").text(humidity);
+    $("#FeelsLike").text(`: ${feelslike}`);
+    $("#CurrentTemperature").text(`: ${tempNormal}`);
+    $("#MaximumTemperature").text(`: ${temp_max}`);
+    $("#MinimumTemperature").text(`: ${temp_min}`);
+    $("#Pressure").text(`: ${pressure}`);
+    $("#Humidity").text(`: ${humidity}`);
   });
 
   $("#searchbutton").click(() => {
