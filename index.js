@@ -39,4 +39,12 @@ $(document).ready(async function () {
     $("#Pressure").text(pressure);
     $("#Humidity").text(humidity);
   });
+
+  $("#searchbutton").click(() => {
+    $("#search").toggleClass("view");
+  });
+
+  $("#lightbutton").click(() => {
+    $("body").toggleClass("light");
+  });
 });

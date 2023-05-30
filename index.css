@@ -5,12 +5,26 @@ body {
     flex-direction: column;
 }
 
+.light {
+    background-color: aliceblue;
+    color: black;
+}
+
 
 #main-header{
     border-bottom: solid 2px white;
     flex-shrink: 1;
     height: 10vh;
+    position: relative;
+    text-align: center;
 
+}
+
+#listbuttons {
+    
+    position: absolute;
+    left: 10px;
+    list-style: none;
 }
 
 
@@ -37,17 +51,17 @@ body {
 
 
 #search {
-    background-color: lightblue;
+
     border-right: 2px solid white;
     flex-grow: 0.5;
     text-align: center;
-    display: flex;
     flex-direction: column;
-
-   
+    display: none;
+}
+.view {
+    display: flex !important    ;
 
 }
-
 
 
 #footersection {
@@ -67,7 +81,7 @@ body {
     align-items: center;
     height: inherit;
     padding: 40px 0;
-    border: 1px solid #aaa;
+   
     flex-grow: 1;
 }
 
@@ -80,3 +94,5 @@ body {
         flex-direction: column-reverse;
     }
 }
+
+
