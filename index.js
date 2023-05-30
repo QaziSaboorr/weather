@@ -1,7 +1,5 @@
 $(document).ready(async function () {
   //ed5f1f55c52f0d9ef61f594d6b513de3
-  let tempInfo;
-  let cloudInfo;
 
   async function data(city, units) {
     console.log(city);
@@ -14,7 +12,7 @@ $(document).ready(async function () {
       console.log(json);
       return json;
     } catch (error) {
-      console.log(error);
+      alert("City not found");
     }
   }
 
@@ -27,10 +25,17 @@ $(document).ready(async function () {
     };
 
     dataJson = await data(input_info.City, input_info.Units);
-    tempInfo = dataJson["main"];
+    let tempInfo = dataJson["main"];
     console.log(tempInfo);
     let { tempNormal, feelslike, temp_min, temp_max, pressure, humidity } =
       tempInfo;
     feelslike = tempInfo["feels_like"];
+
+    $("#FeelsLike").text(feelslike);
+    $("#CurrentTemperature").text(tempNormal);
+    $("#MaximumTemperature").text(temp_max);
+    $("#MinimumTemperature").text(temp_min);
+    $("#Pressure").text(pressure);
+    $("#Humidity").text(humidity);
   });
 });
