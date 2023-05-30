@@ -26,10 +26,11 @@ $(document).ready(async function () {
 
     dataJson = await data(input_info.City, input_info.Units);
     let tempInfo = dataJson["main"];
-    console.log(tempInfo);
+
     let { tempNormal, feelslike, temp_min, temp_max, pressure, humidity } =
       tempInfo;
     feelslike = tempInfo["feels_like"];
+    tempNormal = tempInfo["temp"];
 
     $("#FeelsLike").text(feelslike);
     $("#CurrentTemperature").text(tempNormal);
