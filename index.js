@@ -26,7 +26,7 @@ $(document).ready(async function () {
 
     dataJson = await data(input_info.City, input_info.Units);
     let tempInfo = dataJson["main"];
-
+    console.log(dataJson);
     let { tempNormal, feelslike, temp_min, temp_max, pressure, humidity } =
       tempInfo;
     feelslike = tempInfo["feels_like"];

@@ -1,64 +1,79 @@
 <!doctype HTML>
 <html>
-	<head>
-		<title>Weather app</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="index.css" />
-	</head>
-	<body>
-		<header id = "main-header">
-			<ul id = "listbuttons">
-			<li><button id = "lightbutton">Light mood</button></li>
-			<li><button id = "searchbutton">Search</button></li>
-		</ul>
-			
-		</header>
-		<section id = "sec">
-		<aside id = "search">
-			<h1>
+   <head>
+      <title>Weather app</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="index.css" />
+   </head>
+   <body>
+      <header id = "main-header">
+         <ul id = "listbuttons">
+            <li class = "items"><button  id = "lightbutton">&#128161; </button></li>
+            <li class = "items"><button id = "searchbutton">	&#128269;</button></li>
+         </ul>
+      </header>
+      <section id = "sec">
+         <aside id = "search">
+            <h1>
 				Search
-			</h1>
-			<form id = "myform">
-			
-				<select id = "language"> 
-				<p>Language
-				<option>English</option>
-				<option>Hindi</option>
-				</p>
-			</select>
-			<label>City
-			<input type = "City" id = "city-input" value = Calgary>
-		</label>
-			<label>Units
-			<input type = "Units" id = "units-input" value = Metric>
-		</label>
-			<label>idk
-			<input type = "text" id  = "text-input">
-		</label>
-			<button id = "searchWeather">Search</button>
-			</form>
-		</aside>
-		<main id = "mainsection">
-			<h1>Weather Condition</h1>
-			<section id = "weatherinfo">
-				<b>Feels Like</b><span id = "FeelsLike"> </span>
-				<br>
-				<b>Current Temperature</b><span id = "CurrentTemperature"></span>
-				<br>
-				<b>Minimum Temperature</b><span id = "MinimumTemperature"></span>
-				<br>
-				<b>Pressure</b><span id = "Pressure"></span>
-				<br>
-				<b>Humidity</b><span id = "Humidity"></span>
-			</section>
-		</main>
-		</section>
-		<footer id="footersection">hey</footer>
-	</body>
+            </h1>
+            <form id = "myform">
+               <ul id = "formlist">
+            
+                  <li class = "items2">
+                     <span>City</span>
+                     <label id = "citylabel">
+                     <input type = "City" id = "city-input" value = Calgary  class = "fileds">
+                     </label>
+                  </li>
+                  <li class = "items2">
+                     <span>Units</span>
+                     <label id = "unitslabel">
+                     <input type = "Units" id = "units-input" class = "fileds" value = Metric>
+                     </label>
+                  </li>
+                  <li class = "items2">
+                     <span>idk</span>
+                     <label id = "idklabel">
+                     <input type = "text" id  = "text-input"  class = "fileds">
+                     </label>
+                  </li>
+          
 
-
-	<script src="Jquery.js"></script>
-    <script src = "index.js"></script>
-	</body>
+               
+               </ul>
+			   <div>
+			   <button id = "searchWeather">Search</button>
+			</div>
+            </form>
+         </aside>
+         <main id = "mainsection">
+            <h1>Weather Condition</h1>
+            <section id = "weatherinfo">
+               <ul id ="mainlist">
+                  <li>
+                     <b>Feels Like</b><span id = "FeelsLike"> </span>
+                  </li>
+                  <li>
+                     <b>Current Temperature</b><span id = "CurrentTemperature"></span>
+                  </li>
+                  <li>
+                     <b>Minimum Temperature</b><span id = "MinimumTemperature"></span>
+                  </li>
+                  <li>
+                     <b>Pressure</b><span id = "Pressure"></span>
+                  </li>
+                  <li>
+                     <b>Humidity</b><span id = "Humidity"></span>
+                  </li>
+               </ul>
+            </section>
+         </main>
+      </section>
+      <footer id="footersection">Coded by Qazi Saboor</footer>
+   </body>
+   <script src="Jquery.js"></script>
+   <script src = "index.js"></script>
+   </body>
 </html>
