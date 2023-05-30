@@ -209,6 +209,7 @@ input[type=text]:focus {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: start;
+    font-size: 30px;
   }
 
 

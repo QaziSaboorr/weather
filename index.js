@@ -18,6 +18,7 @@ $(document).ready(async function () {
 
   $("#searchWeather").click(async () => {
     $("#search").toggleClass("view");
+
     event.preventDefault();
     event.stopPropagation();
     let input_info = {
