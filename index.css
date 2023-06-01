@@ -108,13 +108,12 @@ body {
     position: relative;
 }
 #myform {
-    left: 10px;
-    position: absolute;
+    
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    position: relative;
+    
 
 
    
@@ -204,6 +203,12 @@ input[type=text]:focus {
     background-color: lightcyan;
     width: 70px;
     height: 30px;
+
+  }
+
+  #searchWeather{
+    margin-top: 10px;
+
   }
 
 
@@ -282,4 +287,9 @@ input[type=text]:focus {
 
   
 
-  
+  #searchheader {
+    text-align: start;
+    margin: 30px;
+  }
+
+
