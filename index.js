@@ -1,23 +1,40 @@
+// const cityLookup = lookupViaCity("Chicago");
+// console.log(cityLookup);
+
 $(document).ready(async function () {
   //ed5f1f55c52f0d9ef61f594d6b513de3
+  // fetch(
+  //   `http://api.timezonedb.com/v2.1/list-time-zone?key=0FICLL0V72S3&format=xml&city=Calgary`
+  // )
+  //   .then((value) => {
+  //     return value.json();
+  //   })
+  //   .then((value) => {
+  //     console.log(value);
+  //   });
+  $("body").fadeIn(3000).css("display", "flex");
+  let searchshow = false;
 
   async function data(city, units) {
-    console.log(city);
-    console.log(units);
-    try {
-      let info = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ed5f1f55c52f0d9ef61f594d6b513de3&units=metric&lang=en`
-      );
-      let json = await info.json();
-      console.log(json);
-      return json;
-    } catch (error) {
-      alert("City not found");
+    let info = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ed5f1f55c52f0d9ef61f594d6b513de3&units=metric&lang=en`
+    );
+
+    let json = await info.json();
+    console.log(json);
+    if (json["message"] == "city not found") {
+      $("#error").show();
+      return false;
     }
+
+    return json;
   }
 
   $("#searchWeather").click(async () => {
-    $("#search").toggleClass("view");
+    $("#search").hide("slow");
+    searchshow = false;
+
+    $("#mainlist").fadeIn(5000).css("display", "flex");
 
     event.preventDefault();
     event.stopPropagation();
@@ -25,25 +42,69 @@ $(document).ready(async function () {
       City: $("#city-input").val(),
       Units: $("#units-input").val(),
     };
-    $("#cityheader").text(`Weather Condition in ${input_info.City}`);
-    dataJson = await data(input_info.City, input_info.Units);
-    let tempInfo = dataJson["main"];
-    console.log(dataJson);
-    let { tempNormal, feelslike, temp_min, temp_max, pressure, humidity } =
-      tempInfo;
-    feelslike = tempInfo["feels_like"];
-    tempNormal = tempInfo["temp"];
 
-    $("#FeelsLike").text(`: ${feelslike}`);
-    $("#CurrentTemperature").text(`: ${tempNormal}`);
-    $("#MaximumTemperature").text(`: ${temp_max}`);
-    $("#MinimumTemperature").text(`: ${temp_min}`);
-    $("#Pressure").text(`: ${pressure}`);
-    $("#Humidity").text(`: ${humidity}`);
+    dataJson = await data(input_info.City, input_info.Units);
+
+    if (dataJson != false) {
+      $("#error").hide();
+
+      $("#cityheader").text(`Weather Condition in ${input_info.City}`);
+      let tempInfo = dataJson["main"];
+      console.log(dataJson);
+      let { tempNormal, feelslike, temp_min, temp_max, pressure, humidity } =
+        tempInfo;
+      feelslike = tempInfo["feels_like"];
+      tempNormal = tempInfo["temp"];
+      let timezoned = dataJson["timezone"];
+      const offsetInSeconds = timezoned;
+      const date = new Date();
+      date.setSeconds(date.getSeconds() + offsetInSeconds);
+      date.setHours(date.getHours() + 6);
+
+      const time = date.toTimeString().split(" ")[0];
+
+      console.log(time);
+      let Fl = document.getElementById("FeelsLike");
+      Fl.innerHTML = `:&nbsp ${feelslike}\u00B0`;
+      let MT = document.getElementById("MaximumTemperature");
+      MT.innerHTML = `:&nbsp ${temp_max}\u00B0`;
+      let curr = document.getElementById("CurrentTemperature");
+      curr.innerHTML = `:&nbsp ${tempNormal}\u00B0`;
+      let minT = document.getElementById("MinimumTemperature");
+      minT.innerHTML = `:&nbsp ${temp_min}\u00B0`;
+      let hum = document.getElementById("Humidity");
+      hum.innerHTML = `:&nbsp ${humidity}`;
+      let LocalTime = document.getElementById("LocalTime");
+      LocalTime.innerHTML = `:&nbsp ${time}`;
+    } else {
+      if (searchshow === false) {
+        $("#search").show("slow");
+        searchshow = true;
+      }
+      $("#cityheader").text(``);
+      let Fl = document.getElementById("FeelsLike");
+      Fl.innerHTML = ``;
+      let MT = document.getElementById("MaximumTemperature");
+      MT.innerHTML = ``;
+      let curr = document.getElementById("CurrentTemperature");
+      curr.innerHTML = ``;
+      let minT = document.getElementById("MinimumTemperature");
+      minT.innerHTML = ``;
+      let hum = document.getElementById("Humidity");
+      hum.innerHTML = ``;
+      let LocalTime = document.getElementById("LocalTime");
+      LocalTime.innerHTML = ``;
+    }
   });
 
   $("#searchbutton").click(() => {
-    $("#search").toggleClass("view");
+    if (searchshow === false) {
+      $("#search").show("slow");
+      searchshow = true;
+    } else {
+      $("#search").hide("slow");
+      searchshow = false;
+    }
   });
 
   $("#lightbutton").click(() => {
