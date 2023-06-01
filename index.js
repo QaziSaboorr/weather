@@ -34,7 +34,7 @@ $(document).ready(async function () {
     $("#search").hide("slow");
     searchshow = false;
 
-    $("#mainlist").fadeIn(5000).css("display", "flex");
+    $("#grid").fadeIn(5000).css("display", "grid");
 
     event.preventDefault();
     event.stopPropagation();
@@ -57,15 +57,9 @@ $(document).ready(async function () {
       tempNormal = tempInfo["temp"];
       let timezoned = dataJson["timezone"];
       const offsetInSeconds = timezoned;
-      const date = new Date();
-      date.setSeconds(date.getSeconds() + offsetInSeconds);
-      date.setHours(date.getHours() + 6);
 
-      const time = date.toTimeString().split(" ")[0];
-
-      console.log(time);
       let Fl = document.getElementById("FeelsLike");
-      Fl.innerHTML = `:&nbsp ${feelslike}\u00B0`;
+      Fl.innerHTML = `${feelslike}\u00B0`;
       let MT = document.getElementById("MaximumTemperature");
       MT.innerHTML = `:&nbsp ${temp_max}\u00B0`;
       let curr = document.getElementById("CurrentTemperature");
@@ -74,8 +68,14 @@ $(document).ready(async function () {
       minT.innerHTML = `:&nbsp ${temp_min}\u00B0`;
       let hum = document.getElementById("Humidity");
       hum.innerHTML = `:&nbsp ${humidity}`;
-      let LocalTime = document.getElementById("LocalTime");
-      LocalTime.innerHTML = `:&nbsp ${time}`;
+
+      setInterval(() => {
+        const date = new Date();
+        date.setSeconds(date.getSeconds() + offsetInSeconds);
+        date.setHours(date.getHours() + 6);
+        const time = date.toTimeString().split(" ")[0];
+        LocalTime.innerHTML = `:&nbsp ${time}`;
+      }, 1000);
     } else {
       if (searchshow === false) {
         $("#search").show("slow");
