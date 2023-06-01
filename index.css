@@ -20,8 +20,14 @@ body {
 .light {
     background-color: aliceblue;
     color: black !important;
+    
+
 }
 
+.boxesborder {
+  border : 2px solid black !important;
+  color: black !important;
+}
 
 #main-header{
     border-bottom: solid 2px white;
@@ -136,10 +142,11 @@ body {
    
       border : 2px solid yellow;
       display: flex;
-      width: 50px;
-      height: 50px;
+      width: 100px !important;
+      height: 100px !important;
       justify-content: center;
       align-items: center;
+      font-size: small !important;
     }
   
 
@@ -163,8 +170,8 @@ body {
   #grid {
     display: grid;
 
-    grid-template-columns: 1fr 1fr ;
-    grid-template-rows: 1fr 1fr 1fr ;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: 1fr 1fr 1fr !important;
     grid-gap: 20px;
   }
     
@@ -262,6 +269,7 @@ input[type=text]:focus {
     align-items: center;
     border-radius: 40px 20px 30px 0px;
     flex-direction: column;
+    color: gold;
   }
 
 

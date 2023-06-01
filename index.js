@@ -61,20 +61,20 @@ $(document).ready(async function () {
       let Fl = document.getElementById("FeelsLike");
       Fl.innerHTML = `${feelslike}\u00B0`;
       let MT = document.getElementById("MaximumTemperature");
-      MT.innerHTML = `:&nbsp ${temp_max}\u00B0`;
+      MT.innerHTML = `${temp_max}\u00B0`;
       let curr = document.getElementById("CurrentTemperature");
-      curr.innerHTML = `:&nbsp ${tempNormal}\u00B0`;
+      curr.innerHTML = `${tempNormal}\u00B0`;
       let minT = document.getElementById("MinimumTemperature");
-      minT.innerHTML = `:&nbsp ${temp_min}\u00B0`;
+      minT.innerHTML = `${temp_min}\u00B0`;
       let hum = document.getElementById("Humidity");
-      hum.innerHTML = `:&nbsp ${humidity}`;
+      hum.innerHTML = `${humidity}`;
 
       setInterval(() => {
         const date = new Date();
         date.setSeconds(date.getSeconds() + offsetInSeconds);
         date.setHours(date.getHours() + 6);
         const time = date.toTimeString().split(" ")[0];
-        LocalTime.innerHTML = `:&nbsp ${time}`;
+        LocalTime.innerHTML = `s${time}`;
       }, 1000);
     } else {
       if (searchshow === false) {
@@ -109,5 +109,6 @@ $(document).ready(async function () {
 
   $("#lightbutton").click(() => {
     $("body").toggleClass("light");
+    $(".boxes").toggleClass("boxesborder");
   });
 });
