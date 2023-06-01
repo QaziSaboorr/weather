@@ -74,7 +74,7 @@ $(document).ready(async function () {
         date.setSeconds(date.getSeconds() + offsetInSeconds);
         date.setHours(date.getHours() + 6);
         const time = date.toTimeString().split(" ")[0];
-        LocalTime.innerHTML = `s${time}`;
+        LocalTime.innerHTML = `${time}`;
       }, 1000);
     } else {
       if (searchshow === false) {
