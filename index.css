@@ -103,9 +103,11 @@ body {
 
   
 #align {
-    justify-content: start;
-    align-items: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
+    flex-direction: column;
 }
 #myform {
     
@@ -290,10 +292,4 @@ input[type=text]:focus {
   }
 
   
-
-  #searchheader {
-    text-align: start;
-    margin: 30px;
-  }
-
 
