@@ -283,13 +283,7 @@ input[type=text]:focus {
   }
 
 
-  .boxes:hover {
-    transform: rotate(10deg);
-    font-size: xx-large; 
-    /* border-radius: 40px 20px 30px 0px; */
-    border-radius: 0px 30px 20px 40px;
-  }
-
+  
   
  #State {
   width: 80px;
