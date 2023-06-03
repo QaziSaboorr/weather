@@ -141,11 +141,11 @@ body {
    
       border : 2px solid yellow;
       display: flex;
-      width: 100px !important;
-      height: 100px !important;
+      width: 90px !important;
+      height: 90px !important;
       justify-content: center;
       align-items: center;
-      font-size: small !important;
+      font-size: x-small !important;
     }
   
 
@@ -168,8 +168,9 @@ body {
 
   #grid {
     display: grid;
-
-    grid-template-columns: 1fr 1fr !important;
+    width: 50vw !important;
+    height: 50vh !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
     grid-template-rows: 1fr 1fr 1fr !important;
     grid-gap: 20px;
   }
@@ -259,7 +260,7 @@ input[type=text]:focus {
 
   #grid {
     display: none;
-    grid-template-rows: 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
   }
