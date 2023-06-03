@@ -15,9 +15,12 @@ $(document).ready(async function () {
   let searchshow = false;
 
   async function data(city, units) {
-    let info = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ed5f1f55c52f0d9ef61f594d6b513de3&units=${units}&lang=en`
-    );
+    if (units == "metric") {
+      url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ed5f1f55c52f0d9ef61f594d6b513de3&units=${units}&lang=en`;
+    } else {
+      url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ed5f1f55c52f0d9ef61f594d6b513de3&lang=en`;
+    }
+    let info = await fetch(url);
 
     let json = await info.json();
 
@@ -54,7 +57,7 @@ $(document).ready(async function () {
       Units: $("#dropdown").val(),
     };
     input_info.City = capitalizeFirstLetter(input_info.City);
-
+    console.log(input_info.Units);
     dataJson = await data(
       capitalizeFirstLetter(input_info.City),
       input_info.Units
@@ -78,13 +81,10 @@ $(document).ready(async function () {
       tempNormal = tempInfo["temp"];
 
       const imageElement = document.getElementById("State");
-
-      // Assuming your Blob object is named 'blob'
-      // Replace with your actual Blob object
-
-      // Create a temporary URL for the Blob
-
-      // Set the source of the image to the Blob URL
+      let u = "F";
+      if (input_info.Units == "metric") {
+        u = "C";
+      }
       const weatherObj = dataJson["weather"];
       const desc = weatherObj[0]["description"];
       imageElement.src = `https://openweathermap.org/img/wn/${weatherObj[0]["icon"]}@2x.png`;
@@ -95,13 +95,13 @@ $(document).ready(async function () {
       let lat = dataJson["coord"].lat;
 
       let Fl = document.getElementById("FeelsLike");
-      Fl.innerHTML = `${feelslike}\u00B0C`;
+      Fl.innerHTML = `${feelslike}\u00B0${u}`;
       let MT = document.getElementById("MaximumTemperature");
-      MT.innerHTML = `${temp_max}\u00B0C`;
+      MT.innerHTML = `${temp_max}\u00B0${u}`;
       let curr = document.getElementById("CurrentTemperature");
-      curr.innerHTML = `${tempNormal}\u00B0C`;
+      curr.innerHTML = `${tempNormal}\u00B0${u}`;
       let minT = document.getElementById("MinimumTemperature");
-      minT.innerHTML = `${temp_min}\u00B0C`;
+      minT.innerHTML = `${temp_min}\u00B0${u}`;
       let hum = document.getElementById("Humidity");
       hum.innerHTML = `${humidity}%`;
       let visibility = document.getElementById("Visibility");
