@@ -136,7 +136,11 @@ body {
         border-bottom: white 2px solid;
     }
 
-    
+    #weatherinfo {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
     .boxes{
    
       border : 2px solid yellow;
@@ -168,8 +172,7 @@ body {
 
   #grid {
     display: grid;
-    width: 50vw !important;
-    height: 50vh !important;
+  
     grid-template-columns: 1fr 1fr 1fr !important;
     grid-template-rows: 1fr 1fr 1fr !important;
     grid-gap: 20px;
