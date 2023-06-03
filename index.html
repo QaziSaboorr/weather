@@ -17,7 +17,7 @@
       <section id = "sec">
          <aside id = "search">
            
-			<div id = "align">
+			
             <h1 id = "searchheader">
                Search
                </h1>
@@ -28,7 +28,12 @@
                      <label id = "citylabel">
                      <input type = "City" id = "city-input" value = Calgary  class = "fileds">
                      </label>
-   
+                    
+                     <span id = "units-option">Units</span>
+                     <select id="dropdown">
+                         <option value="metric">C</option>
+                         <option value="imperial">F</option>
+                     </select>
                 
                   
 
@@ -38,7 +43,7 @@
 			   <button id = "searchWeather">Search</button>
 	
             </form>
-		</div>
+
          </aside>
          <main id = "mainsection">
             <h1 id ="cityheader">Weather Condition</h1>
@@ -70,7 +75,7 @@
                      <b>WindSpeed</b><span id = "Windspeed"></span>
                   </div>
                   <div class = "boxes">
-                     <b>State</b><span id = "State"></span>
+                     <b>State</b><img id = "State" src =""  alt = "should be weather state image"><span id = "description"></span>
                   </div>
                   <div class = "boxes">
                      <b>Visibility</b><span id = "Visibility"></span>

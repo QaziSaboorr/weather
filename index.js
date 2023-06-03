@@ -16,7 +16,7 @@ $(document).ready(async function () {
 
   async function data(city, units) {
     let info = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ed5f1f55c52f0d9ef61f594d6b513de3&units=metric&lang=en`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ed5f1f55c52f0d9ef61f594d6b513de3&units=${units}&lang=en`
     );
 
     let json = await info.json();
@@ -29,10 +29,13 @@ $(document).ready(async function () {
     return json;
   }
 
-  async function Pic() {
-    let imageInfo = await fetch("https://openweathermap.org/img/wn/10d@2x.png");
-    let imageblob = await imageInfo.blob();
-    return imageblob;
+  function capitalizeFirstLetter(str) {
+    if (str.length > 0) {
+      // Capitalize the first letter and convert the rest to lowercase
+      return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    }
+    // If the string is empty, return an empty string
+    return "";
   }
 
   $("#searchWeather").click(async () => {
@@ -48,10 +51,14 @@ $(document).ready(async function () {
     event.stopPropagation();
     let input_info = {
       City: $("#city-input").val(),
-      Units: $("#units-input").val(),
+      Units: $("#dropdown").val(),
     };
+    input_info.City = capitalizeFirstLetter(input_info.City);
 
-    dataJson = await data(input_info.City, input_info.Units);
+    dataJson = await data(
+      capitalizeFirstLetter(input_info.City),
+      input_info.Units
+    );
 
     if (dataJson != false) {
       $("#error").hide();
@@ -69,11 +76,24 @@ $(document).ready(async function () {
         tempInfo;
       feelslike = tempInfo["feels_like"];
       tempNormal = tempInfo["temp"];
-      const imageInfo = Pic();
 
+      const imageElement = document.getElementById("State");
+
+      // Assuming your Blob object is named 'blob'
+      // Replace with your actual Blob object
+
+      // Create a temporary URL for the Blob
+
+      // Set the source of the image to the Blob URL
+      const weatherObj = dataJson["weather"];
+      const desc = weatherObj[0]["description"];
+      imageElement.src = `https://openweathermap.org/img/wn/${weatherObj[0]["icon"]}@2x.png`;
+
+      let vis = dataJson["visibility"];
+      let winds = dataJson["wind"].speed;
       let lang = dataJson["coord"].lon;
       let lat = dataJson["coord"].lat;
-      const time_12 = await time(lat, lang);
+
       let Fl = document.getElementById("FeelsLike");
       Fl.innerHTML = `${feelslike}\u00B0C`;
       let MT = document.getElementById("MaximumTemperature");
@@ -84,12 +104,17 @@ $(document).ready(async function () {
       minT.innerHTML = `${temp_min}\u00B0C`;
       let hum = document.getElementById("Humidity");
       hum.innerHTML = `${humidity}%`;
+      let visibility = document.getElementById("Visibility");
+      visibility.innerHTML = `${vis}m`;
+      let windspeed = document.getElementById("Windspeed");
+      windspeed.innerHTML = `${winds}km/h`;
+      let description = document.getElementById("description");
+      description.innerHTML = `${desc}`;
 
       IntervalId = setInterval(async () => {
         const time_12 = await time(lat, lang);
 
-        LocalTime.innerHTML = ``;
-        LocalTime.innerHTML = time_12 + 1;
+        LocalTime.innerHTML = time_12;
       }, 1000);
     } else {
       if (searchshow === false) {
@@ -109,6 +134,14 @@ $(document).ready(async function () {
       hum.innerHTML = ``;
       let LocalTime = document.getElementById("LocalTime");
       LocalTime.innerHTML = ``;
+      let visibility = document.getElementById("Visibility");
+      visibility.innerHTML = `${vis}m`;
+      let windspeed = document.getElementById("Windspeed");
+      windspeed.innerHTML = ``;
+      let description = document.getElementById("description");
+      description.innerHTML = ``;
+      const imageElement = document.getElementById("State");
+      imageElement.src = ``;
     }
   });
 
