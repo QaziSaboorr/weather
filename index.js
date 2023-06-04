@@ -4,7 +4,7 @@ $(document).ready(async function () {
   let IntervalId = null;
   async function time(lat, long) {
     let whole = await fetch(
-      `https://api.ipgeolocation.io/timezone?apiKey=ce763c9d82ef40d8bb7f3a66f1f5689e
+      `https://api.ipgeolocation.io/timezone?apiKey=708a163f986447cfb40b7537f5387233
       &lat=${lat}&long=${long}`
     );
     let json = await whole.json();
